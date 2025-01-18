@@ -8,7 +8,6 @@ aiofiles
 sentence-transformers
 pinecone
 openai
-csv
 PyPDF2
 python-dotenv
 transformers
