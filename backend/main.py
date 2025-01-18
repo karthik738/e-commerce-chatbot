@@ -1,8 +1,8 @@
 import logging
 from fastapi import FastAPI
-# from routes.upload import router as upload_router
-# from routes.query import router as query_router
-# from routes.auth import router as auth_router
+from routes.upload import router as upload_router
+from routes.query import router as query_router
+from routes.auth import router as auth_router
 from fastapi.middleware.cors import CORSMiddleware
 import os
 
@@ -11,8 +11,8 @@ import sys
 
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-    stream=sys.stdout  # Ensure logs are sent to stdout
+    format="%(asctime)s - %(levelname)s - %(message)s"
+    # stream=sys.stdout  # Ensure logs are sent to stdout
 )
 
 
@@ -46,41 +46,46 @@ logging.info("Starting after middleware")
 
 
 # Include routers
-try:
-    from routes.upload import router as upload_router
-    app.include_router(upload_router, prefix="/upload", tags=["File Upload"])
-    logging.info("Upload router included successfully.")
-except Exception as e:
-    logging.error(f"Error including upload router: {e}")
+# try:
+#     from routes.upload import router as upload_router
+#     app.include_router(upload_router, prefix="/upload", tags=["File Upload"])
+#     logging.info("Upload router included successfully.")
+# except Exception as e:
+#     logging.error(f"Error including upload router: {e}")
 
-# app.include_router(upload_router, prefix="/upload", tags=["File Upload"])
-# logging.info("after uplaod")
+app.include_router(upload_router, prefix="/upload", tags=["File Upload"])
+logging.info("after uplaod")
 
-try:
-    from routes.query import router as query_router
-    app.include_router(query_router, prefix="/query", tags=["Query"])
-    logging.info("Query router included successfully.")
-except Exception as e:
-    logging.error(f"Error including Query router: {e}")
+# try:
+#     from routes.query import router as query_router
+#     app.include_router(query_router, prefix="/query", tags=["Query"])
+#     logging.info("Query router included successfully.")
+# except Exception as e:
+#     logging.error(f"Error including Query router: {e}")
 
-# app.include_router(query_router, prefix="/query", tags=["Query"])
-# logging.info("after query")
+app.include_router(query_router, prefix="/query", tags=["Query"])
+logging.info("after query")
 
-try:
-    from routes.auth import router as auth_router
-    app.include_router(auth_router, prefix="/auth", tags=["Authentication"])
-    logging.info("auth router included successfully.")
-except Exception as e:
-    logging.error(f"Error including auth router: {e}")
+# try:
+#     from routes.auth import router as auth_router
+#     app.include_router(auth_router, prefix="/auth", tags=["Authentication"])
+#     logging.info("auth router included successfully.")
+# except Exception as e:
+#     logging.error(f"Error including auth router: {e}")
 
-# app.include_router(auth_router, prefix="/auth", tags=["Authentication"])
-# logging.info("after auth")
+app.include_router(auth_router, prefix="/auth", tags=["Authentication"])
+logging.info("after auth")
 
 
 # Root route
 @app.get("/")
 async def root():
     return {"message": "Welcome to the RAG Chatbot Backend"}
+
+@app.get("/{full_path:path}")
+async def fallback(full_path: str):
+    return {"error": "File not found", "path": full_path}
+
 
 
 logging.info("after root")
@@ -98,10 +103,10 @@ def get_vector_db():
 logging.info("after vector db function")
 
 
-if __name__ == "__main__":
-    import uvicorn
-    port = int(os.getenv("PORT", 8000))  # Fallback to 8000 if PORT is not set
-    uvicorn.run("main:app", host="0.0.0.0", port=port, log_level="debug")
+# if __name__ == "__main__":
+#     import uvicorn
+#     port = int(os.getenv("PORT", 8000))  # Fallback to 8000 if PORT is not set
+#     uvicorn.run("main:app", host="0.0.0.0", port=port, log_level="debug")
 
 
 
