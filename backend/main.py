@@ -28,7 +28,8 @@ origins = [
     "http://localhost:3000",  # Frontend development server
     "http://localhost:8501",  # Streamlit development server
     "https://e-commerce-chatbot-black.vercel.app/",
-    "https://e-commerce-chatbot.streamlit.app/"
+    "https://e-commerce-chatbot.streamlit.app/",
+    "https://e-commerce-chatbot-production.up.railway.app/",
 ]
 
 logging.info("after origins")
@@ -74,6 +75,12 @@ def get_vector_db():
     return vector_db
 
 logging.info("after vector db function")
+
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.getenv("PORT", 8000))  # Fallback to 8000 if PORT is not set
+    uvicorn.run("main:app", host="0.0.0.0", port=port, log_level="debug")
 
 
 
