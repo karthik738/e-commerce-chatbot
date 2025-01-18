@@ -10,7 +10,7 @@ EXTRACTED_DIR = "extracted_content"
 os.makedirs(EXTRACTED_DIR, exist_ok=True)
 
 # Configure logging
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+# logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 
 def process_file(filename, file_path, vector_db, chunk_size=500):

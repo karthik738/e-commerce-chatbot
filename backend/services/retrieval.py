@@ -5,7 +5,7 @@ import logging
 MODEL_NAME = "all-MiniLM-L6-v2"
 
 # Configure logging
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+# logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 def retrieve_from_pinecone(query, vector_db, top_k=5):
     """Retrieve relevant chunks and their metadata from Pinecone."""
@@ -34,17 +34,17 @@ def retrieve_from_pinecone(query, vector_db, top_k=5):
         # raise
 
 
-def format_retrieved_chunks(matches):
-    """Format retrieved matches for readability."""
-    formatted_results = []
-    for match in matches:
-        try:
-            # Use 'id' if 'metadata' is not present
-            chunk_id = match.get("metadata", {}).get("chunk_id", "N/A")
-            content_snippet = match.get("content", "")[:50]  # First 50 characters
-            score = match.get("score", 0)
-            formatted_results.append({"chunk_id": chunk_id, "content_snippet": content_snippet,"score": score})
-        except KeyError as e:
-            # Log and skip malformed matches
-            print(f"Malformed match encountered: {match} (Error: {e})")
-    return formatted_results
+# def format_retrieved_chunks(matches):
+#     """Format retrieved matches for readability."""
+#     formatted_results = []
+#     for match in matches:
+#         try:
+#             # Use 'id' if 'metadata' is not present
+#             chunk_id = match.get("metadata", {}).get("chunk_id", "N/A")
+#             content_snippet = match.get("content", "")[:50]  # First 50 characters
+#             score = match.get("score", 0)
+#             formatted_results.append({"chunk_id": chunk_id, "content_snippet": content_snippet,"score": score})
+#         except KeyError as e:
+#             # Log and skip malformed matches
+#             print(f"Malformed match encountered: {match} (Error: {e})")
+#     return formatted_results

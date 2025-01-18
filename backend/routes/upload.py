@@ -1,9 +1,9 @@
 import os
 import logging
 from fastapi import APIRouter, UploadFile, File, BackgroundTasks, HTTPException
-from fastapi.responses import JSONResponse
+# from fastapi.responses import JSONResponse
 import aiofiles
-from services.embedding import generate_embeddings, init_vector_db, embeddings_exist
+from services.embedding import init_vector_db, embeddings_exist
 from utils.file_utils import process_file
 
 # Constants
@@ -26,7 +26,7 @@ def get_vector_db():
     """
     global _vector_db
     if _vector_db is None:
-        logging.info("Initializing vector database...")
+        # logging.info("Initializing vector database...")
         _vector_db = init_vector_db()
     return _vector_db
 

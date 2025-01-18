@@ -76,3 +76,6 @@ docs/
 *.coverage
 *.pytest_cache
 instructions.txt
+
+backend/extracted_content
+backend/uploaded_files

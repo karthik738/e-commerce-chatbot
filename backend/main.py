@@ -4,10 +4,10 @@ from routes.upload import router as upload_router
 from routes.query import router as query_router
 from routes.auth import router as auth_router
 from fastapi.middleware.cors import CORSMiddleware
-import os
+# import os
 
 # Logging configuration
-import sys
+# import sys
 
 logging.basicConfig(
     level=logging.INFO,
@@ -16,12 +16,12 @@ logging.basicConfig(
 )
 
 
-logging.info("before FastAPI application")
+# logging.info("before FastAPI application")
 
 # Initialize FastAPI app
 app = FastAPI(debug=True)
 
-logging.info("afterr the FastAPI application")
+# logging.info("afterr the FastAPI application")
 
 # List of allowed origins
 origins = [
@@ -32,7 +32,7 @@ origins = [
     "https://e-commerce-chatbot-production.up.railway.app/",
 ]
 
-logging.info("after origins")
+# logging.info("after origins")
 
 # Add CORS middleware
 app.add_middleware(
@@ -42,7 +42,7 @@ app.add_middleware(
     allow_methods=["*"],  # Allow all HTTP methods (GET, POST, etc.)
     allow_headers=["*"],  # Allow all headers
 )
-logging.info("Starting after middleware")
+# logging.info("Starting after middleware")
 
 
 # Include routers
@@ -54,7 +54,7 @@ logging.info("Starting after middleware")
 #     logging.error(f"Error including upload router: {e}")
 
 app.include_router(upload_router, prefix="/upload", tags=["File Upload"])
-logging.info("after uplaod")
+# logging.info("after uplaod")
 
 # try:
 #     from routes.query import router as query_router
@@ -64,7 +64,7 @@ logging.info("after uplaod")
 #     logging.error(f"Error including Query router: {e}")
 
 app.include_router(query_router, prefix="/query", tags=["Query"])
-logging.info("after query")
+# logging.info("after query")
 
 # try:
 #     from routes.auth import router as auth_router
@@ -74,7 +74,7 @@ logging.info("after query")
 #     logging.error(f"Error including auth router: {e}")
 
 app.include_router(auth_router, prefix="/auth", tags=["Authentication"])
-logging.info("after auth")
+# logging.info("after auth")
 
 
 # Root route
@@ -88,7 +88,7 @@ async def fallback(full_path: str):
 
 
 
-logging.info("after root")
+# logging.info("after root")
 
 # Lazy-loading of resources to optimize memory
 vector_db = None
@@ -100,7 +100,7 @@ def get_vector_db():
         vector_db = init_vector_db()
     return vector_db
 
-logging.info("after vector db function")
+# logging.info("after vector db function")
 
 
 # if __name__ == "__main__":

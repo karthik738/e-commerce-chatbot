@@ -11,7 +11,7 @@ METRIC = "cosine"  # Similarity metric
 PINECONE_API_KEY="pcsk_5NqT9L_2TnqthjdeDQz38xJZJeZhwkzmGd68g6uGj1MsvtAi6LG532NqCRpXwojGWGeZb1"
 # print(f"Pinecone api key: {PINECONE_API_KEY}")
 # Configure logging
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+# logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 def init_vector_db():
     """Initialize Pinecone vector database."""

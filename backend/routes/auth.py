@@ -25,7 +25,7 @@ class UserOut(BaseModel):
 
 
 class Settings(BaseModel):
-    authjwt_secret_key: str = "your_secret_key"
+    authjwt_secret_key: str = "18e6266a2deb655f11d4dcab386dfc95e77a360e262ba9f0c0635d0cbdc802b5"
     authjwt_access_token_expires: int = 60  # Token expiration time in minutes
 
 
@@ -43,8 +43,7 @@ async def register(user: User):
         raise HTTPException(status_code=400, detail="Username already registered.")
 
     # Hash the password and store the user
-    hashed_password = pwd_context.hash(user.password)
-    users_db[user.username] = hashed_password
+    users_db[user.username] = pwd_context.hash(user.password)
 
     return {"username": user.username, "message": "User registered successfully."}
 
@@ -54,12 +53,17 @@ async def login(user: User, Authorize: AuthJWT = Depends()):
     """
     Authenticate a user and return a JWT token.
     """
-    if user.username not in users_db:
+    # if user.username not in users_db:
+        # raise HTTPException(status_code=401, detail="Invalid username or password.")
+
+    # hashed_password = users_db[user.username]
+    # if not pwd_context.verify(user.password, hashed_password):
+        # raise HTTPException(status_code=401, detail="Invalid username or password.")
+
+    hashed_password = users_db.get(user.username)
+    if not hashed_password or not pwd_context.verify(user.password, hashed_password):
         raise HTTPException(status_code=401, detail="Invalid username or password.")
 
-    hashed_password = users_db[user.username]
-    if not pwd_context.verify(user.password, hashed_password):
-        raise HTTPException(status_code=401, detail="Invalid username or password.")
 
     # Create the access token
     access_token = Authorize.create_access_token(

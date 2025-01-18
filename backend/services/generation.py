@@ -57,48 +57,48 @@ def summarize_with_openrouter(history):
         logging.error(f"Error during summarization: {e}")
         return "Summary unavailable due to an error."
 
-from transformers import pipeline
+# from transformers import pipeline
 
 # Load the summarization model
-summarizer = pipeline("summarization", model="google/flan-t5-base")
+# summarizer = pipeline("summarization", model="google/flan-t5-base")
 
-def summarize_with_local_model(history):
-    """
-    Summarize the history using a locally hosted model.
-    """
-    try:
-        combined_history = " ".join(
-            f"Q: {entry['query']} A: {entry['answer']}" for entry in history
-        )
+# def summarize_with_local_model(history):
+#     """
+#     Summarize the history using a locally hosted model.
+#     """
+#     try:
+#         combined_history = " ".join(
+#             f"Q: {entry['query']} A: {entry['answer']}" for entry in history
+#         )
 
-        # Use the model to summarize
-        summary = summarizer(combined_history, max_length=100, min_length=30, do_sample=False)
-        return summary[0]["summary_text"]
-    except Exception as e:
-        logging.error(f"Error during local summarization: {e}")
-        return "Summary unavailable due to an error."
+#         # Use the model to summarize
+#         summary = summarizer(combined_history, max_length=100, min_length=30, do_sample=False)
+#         return summary[0]["summary_text"]
+#     except Exception as e:
+#         logging.error(f"Error during local summarization: {e}")
+#         return "Summary unavailable due to an error."
 
 
-def summarize_with_heuristics(history):
-    """
-    Summarize the history using basic heuristics (extractive summarization).
-    """
-    try:
-        # Select only the most recent N exchanges
-        recent_history = history[-5:]
+# def summarize_with_heuristics(history):
+#     """
+#     Summarize the history using basic heuristics (extractive summarization).
+#     """
+#     try:
+#         # Select only the most recent N exchanges
+#         recent_history = history[-5:]
 
-        # Extract keywords from older history
-        older_history = history[:-5]
-        keywords = " ".join(
-            f"Q: {entry['query']} A: {entry['answer']}" for entry in older_history
-        )[:500]  # Limit to 500 characters
+#         # Extract keywords from older history
+#         older_history = history[:-5]
+#         keywords = " ".join(
+#             f"Q: {entry['query']} A: {entry['answer']}" for entry in older_history
+#         )[:500]  # Limit to 500 characters
 
-        # Combine recent and keyword-based history
-        summary = f"Recent: {recent_history} Keywords: {keywords}"
-        return summary
-    except Exception as e:
-        logging.error(f"Error during heuristic summarization: {e}")
-        return "Summary unavailable due to an error."
+#         # Combine recent and keyword-based history
+#         summary = f"Recent: {recent_history} Keywords: {keywords}"
+#         return summary
+#     except Exception as e:
+#         logging.error(f"Error during heuristic summarization: {e}")
+#         return "Summary unavailable due to an error."
 
 
 def generate_response_with_llm(query, context):
@@ -120,7 +120,7 @@ def generate_response_with_llm(query, context):
             f"User Query: {query}\n\n"
             f"Provide a helpful, concise response based on the context."
         )
-        logging.info(f"Prompt constructed for LLM: {prompt[:500]}")  # Log the first 500 characters
+        # logging.info(f"Prompt constructed for LLM: {prompt[:500]}")  # Log the first 500 characters
 
 
         # Call the OpenRouter API
