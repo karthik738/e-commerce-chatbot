@@ -1,0 +1,78 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environment
+venv/
+ENV/
+env/
+.venv/
+.ENV/
+.env/
+.venv/
+
+# Editor and IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Logs
+*.log
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Streamlit cache and temp files
+.streamlit/
+.cache/
+__pycache__/
+
+# Environment variables
+.env
+.env.*
+
+# Ignore node_modules (if Node.js or frontend setup exists)
+node_modules/
+
+# Ignore Git metadata
+*.lock
+.git/
+
+# Specific folders in your structure
+backend/__pycache__/
+chatbot_ui/__pycache__/
+streamlit_app_v1/__pycache__/
+streamlit_app_final/__pycache__/
+docs/
+
+# Ignore compiled or test outputs
+*.test
+*.coverage
+*.pytest_cache
+instructions.txt
