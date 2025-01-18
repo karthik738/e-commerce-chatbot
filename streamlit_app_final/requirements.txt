@@ -1,0 +1,7 @@
+streamlit
+requests
+fastapi
+pinecone-client
+openai
+uvicorn
+typing
