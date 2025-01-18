@@ -16,6 +16,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 def init_vector_db():
     """Initialize Pinecone vector database."""
     try:
+        
         # Fetch API key from environment variables
         # api_key = os.getenv("PINECONE_API_KEY")
         # if not api_key:
@@ -25,16 +26,16 @@ def init_vector_db():
         pc = Pinecone(api_key=PINECONE_API_KEY)
 
         # Check if the index exists, create it if it doesn't
-        if INDEX_NAME not in pc.list_indexes().names():
-            pc.create_index(
-                name=INDEX_NAME,
-                dimension=DIMENSION,
-                metric=METRIC,
-                spec=ServerlessSpec(
-                    cloud="aws",  # Specify your cloud provider
-                    region="us-east-1"  # Specify your desired region
-                )
-            )
+        # if INDEX_NAME not in pc.list_indexes().names():
+        #     pc.create_index(
+        #         name=INDEX_NAME,
+        #         dimension=DIMENSION,
+        #         metric=METRIC,
+        #         spec=ServerlessSpec(
+        #             cloud="aws",  # Specify your cloud provider
+        #             region="us-east-1"  # Specify your desired region
+        #         )
+        #     )
             # logging.info(f"Index '{INDEX_NAME}' created.")
         # else:
             # logging.info(f"Index '{INDEX_NAME}' already exists.")
