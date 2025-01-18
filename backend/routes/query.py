@@ -114,8 +114,21 @@ async def query_embeddings(request: QueryRequest, vector_db=Depends(get_vector_d
             }
 
         # Combine summarized history, recent conversation, and relevant context
+
+        # Summarize older history if it exists
+        summarized_history = ""
+        if len(history) > 5:  # Only summarize if history is large
+                summarized_history = summarize_with_openrouter(history[:-5])
+
+        # summarized_history = ""
+        # try:
+            # if len(history) > 5:  # Only summarize if history is large
+                # summarized_history = summarize_with_openrouter(history[:-5])
+        # except Exception as e:
+            # logging.warning(f"Summarization failed: {e}")
+            # summarized_history = ""
         # summarized_history = summarize_history(history[:-5])  # Summarize older history
-        summarized_history = summarize_with_openrouter(history[:-5])  # Summarize older history
+        # summarized_history = summarize_with_openrouter(history[:-5])  # Summarize older history
         # Alternative: Use local model or heuristic summarization
         # summarized_history = summarize_with_local_model(history[:-5])
         # summarized_history = summarize_with_heuristics(history[:-5])
