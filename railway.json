@@ -1,0 +1,9 @@
+{
+    "build": {
+      "builder": "NIXPACKS",
+      "nixpacks": {
+        "workingDirectory": "backend"
+      }
+    }
+  }
+  
