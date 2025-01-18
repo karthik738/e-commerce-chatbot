@@ -1,8 +1,8 @@
 import logging
 from fastapi import FastAPI
-from routes.upload import router as upload_router
-from routes.query import router as query_router
-from routes.auth import router as auth_router
+# from routes.upload import router as upload_router
+# from routes.query import router as query_router
+# from routes.auth import router as auth_router
 from fastapi.middleware.cors import CORSMiddleware
 import os
 
@@ -46,14 +46,35 @@ logging.info("Starting after middleware")
 
 
 # Include routers
-app.include_router(upload_router, prefix="/upload", tags=["File Upload"])
-logging.info("after uplaod")
+try:
+    from routes.upload import router as upload_router
+    app.include_router(upload_router, prefix="/upload", tags=["File Upload"])
+    logging.info("Upload router included successfully.")
+except Exception as e:
+    logging.error(f"Error including upload router: {e}")
 
-app.include_router(query_router, prefix="/query", tags=["Query"])
-logging.info("after query")
+# app.include_router(upload_router, prefix="/upload", tags=["File Upload"])
+# logging.info("after uplaod")
 
-app.include_router(auth_router, prefix="/auth", tags=["Authentication"])
-logging.info("after auth")
+try:
+    from routes.query import router as query_router
+    app.include_router(query_router, prefix="/query", tags=["Query"])
+    logging.info("Query router included successfully.")
+except Exception as e:
+    logging.error(f"Error including Query router: {e}")
+
+# app.include_router(query_router, prefix="/query", tags=["Query"])
+# logging.info("after query")
+
+try:
+    from routes.auth import router as auth_router
+    app.include_router(auth_router, prefix="/auth", tags=["Authentication"])
+    logging.info("auth router included successfully.")
+except Exception as e:
+    logging.error(f"Error including auth router: {e}")
+
+# app.include_router(auth_router, prefix="/auth", tags=["Authentication"])
+# logging.info("after auth")
 
 
 # Root route
