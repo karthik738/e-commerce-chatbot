@@ -12,6 +12,9 @@ app = FastAPI()
 origins = [
     "http://localhost:3000",  # Frontend development server
     "http://localhost:8501"  # Add your production domain here
+    "https://e-commerce-chatbot-black.vercel.app/",
+    "https://e-commerce-chatbot.streamlit.app/"
+
 ]
 
 # Add CORS middleware
