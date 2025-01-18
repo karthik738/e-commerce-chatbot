@@ -6,8 +6,16 @@ from routes.auth import router as auth_router
 from fastapi.middleware.cors import CORSMiddleware
 import os
 
+# Logging configuration
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+
+
+logging.info("before FastAPI application")
+
 # Initialize FastAPI app
-app = FastAPI()
+app = FastAPI(debug=True)
+
+logging.info("afterr the FastAPI application")
 
 # List of allowed origins
 origins = [
@@ -17,6 +25,8 @@ origins = [
     "https://e-commerce-chatbot.streamlit.app/"
 ]
 
+logging.info("after origins")
+
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
@@ -25,19 +35,27 @@ app.add_middleware(
     allow_methods=["*"],  # Allow all HTTP methods (GET, POST, etc.)
     allow_headers=["*"],  # Allow all headers
 )
+logging.info("Starting after middleware")
+
 
 # Include routers
 app.include_router(upload_router, prefix="/upload", tags=["File Upload"])
-app.include_router(query_router, prefix="/query", tags=["Query"])
-app.include_router(auth_router, prefix="/auth", tags=["Authentication"])
+logging.info("after uplaod")
 
-# Logging configuration
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+app.include_router(query_router, prefix="/query", tags=["Query"])
+logging.info("after query")
+
+app.include_router(auth_router, prefix="/auth", tags=["Authentication"])
+logging.info("after auth")
+
 
 # Root route
 @app.get("/")
 async def root():
     return {"message": "Welcome to the RAG Chatbot Backend"}
+
+
+logging.info("after root")
 
 # Lazy-loading of resources to optimize memory
 vector_db = None
@@ -49,9 +67,16 @@ def get_vector_db():
         vector_db = init_vector_db()
     return vector_db
 
+logging.info("after vector db function")
+
+
 # Main block for running the app
 if __name__ == "__main__":
+    logging.info("inside main")
     import uvicorn
     port = int(os.getenv("PORT", 8000))  # Fallback to 8000 if PORT is not set
+    logging.info(f"after port")
     logging.info(f"Starting server on port {port}...")
     uvicorn.run("main:app", host="0.0.0.0", port=port)
+    logging.info("after running")
+
