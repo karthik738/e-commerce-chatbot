@@ -1,22 +1,22 @@
-fastapi
-passlib
-fastapi-jwt-auth
-pydantic
-datetime
-logging
-aiofiles
-sentence-transformers
-pinecone
-openai
-PyPDF2
-python-dotenv
-transformers
-uvicorn
-python-multipart
-torch
-pinecone-client
-numpy
-scikit-learn
-pyjwt
+# fastapi
+# passlib
+# fastapi-jwt-auth
+# pydantic
+# datetime
+# logging
+# aiofiles
+# sentence-transformers
+# pinecone
+# openai
+# PyPDF2
+# python-dotenv
+# transformers
+# uvicorn
+# python-multipart
+# torch
+# pinecone-client
+# numpy
+# scikit-learn
+# pyjwt
 
 

@@ -41,3 +41,11 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 @app.get("/")
 async def root():
     return {"message": "Welcome to the RAG Chatbot Backend"}
+
+
+import os
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.getenv("PORT", 8000))  # Fallback to 8000 if PORT is not set
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)
