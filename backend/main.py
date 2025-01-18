@@ -7,7 +7,13 @@ from fastapi.middleware.cors import CORSMiddleware
 import os
 
 # Logging configuration
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+import sys
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    stream=sys.stdout  # Ensure logs are sent to stdout
+)
 
 
 logging.info("before FastAPI application")
@@ -70,13 +76,4 @@ def get_vector_db():
 logging.info("after vector db function")
 
 
-# Main block for running the app
-if __name__ == "__main__":
-    logging.info("inside main")
-    import uvicorn
-    port = int(os.getenv("PORT", 8000))  # Fallback to 8000 if PORT is not set
-    logging.info(f"after port")
-    logging.info(f"Starting server on port {port}...")
-    uvicorn.run("main:app", host="0.0.0.0", port=port)
-    logging.info("after running")
 
