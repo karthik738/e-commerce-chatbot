@@ -71,6 +71,12 @@ A robust, embeddable chatbot designed for eCommerce websites to enhance customer
 
    ![Image 19](https://github.com/karthik738/e-commerce-chatbot/blob/main/images/Screenshot%20(1293).png?raw=true)
 
+   ![Image 20](https://github.com/karthik738/e-commerce-chatbot/blob/main/images/Screenshot%20(1313).png?raw=true)
+
+   ![Image 21](https://github.com/karthik738/e-commerce-chatbot/blob/main/images/Screenshot%20(1315).png?raw=true)
+
+   ![Image 22](https://github.com/karthik738/e-commerce-chatbot/blob/main/images/Screenshot%20(1316).png?raw=true)
+
 
 ---
 
