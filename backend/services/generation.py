@@ -1,8 +1,13 @@
 import logging
 from openai import OpenAI
+import dotenv
+import os
 
+dotenv.load_dotenv()
+
+# print(os.getenv("API_KEY"))
 # Constants
-API_KEY = "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"
+API_KEY = os.getenv("API_KEY")
 BASE_URL = "https://openrouter.ai/api/v1"
 MODEL_NAME = "meta-llama/llama-3.2-3b-instruct:free"
 
