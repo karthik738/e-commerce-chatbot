@@ -172,9 +172,11 @@ def render_upload_page():
                 st.error(f"An error occurred during file upload: {e}")
 
 # Query System page
+# Query System page
 def render_query_page():
     st.title("Chat with the Knowledge Base")
 
+    # Display the chat history
     def display_chat():
         for chat in st.session_state["chat_history"]:
             st.markdown(f"**You:** {chat['query']}")
@@ -183,19 +185,40 @@ def render_query_page():
 
     display_chat()
 
-    query = st.text_input("Enter your question:", key="temp_query", placeholder="Type your question here...")
+    # Input field for the query
+    def handle_query_change():
+        """Handler to process changes in the input field."""
+        st.session_state["current_query"] = st.session_state.get("temp_query", "")
+
+    # Initialize the current query in session state
+    if "current_query" not in st.session_state:
+        st.session_state["current_query"] = ""
+
+    st.text_input(
+        "Enter your question:",
+        key="temp_query",
+        value=st.session_state["current_query"],  # Persist the current query
+        placeholder="Type your question here...",
+        on_change=handle_query_change,  # Handle input change
+    )
+
+    # Handle the query submission
     if st.button("Send"):
-        if query.strip():
+        query = st.session_state.get("current_query", "").strip()
+        if query:
             with st.spinner("Fetching answer..."):
                 try:
+                    # Query the backend API
                     response = query_backend(QUERY_ENDPOINT, query, st.session_state["chat_history"])
                     if response and response.status_code == 200:
                         data = response.json()
+                        # Append the query and answer to chat history
                         st.session_state["chat_history"].append({
                             "query": query,
-                            "answer": data.get("answer", "No answer available.")
+                            "answer": data.get("answer", "No answer available."),
                         })
-                        st.session_state["temp_query"] = ""  # Clear the input field
+                        # Clear the input field for the next query
+                        st.session_state["current_query"] = ""
                     else:
                         st.error(f"Query failed. Status code: {response.status_code}")
                 except Exception as e:
@@ -205,6 +228,12 @@ def render_query_page():
 def render_profile_page():
     render_top_bar()
     st.title("Profile Management")
+
+    # Add a button to go back to the home page
+    if st.button("Back to Home", key="back_to_home"):
+        st.session_state["page"] = "Home"
+
+    # Render the user management section
     manage_users()
 
 # Main App Logic
