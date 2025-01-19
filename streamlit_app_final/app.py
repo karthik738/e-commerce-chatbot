@@ -195,7 +195,7 @@ def render_query_page():
                 st.info("No chat history yet. Start by asking a question!")
 
     # Display the current chat history
-    display_chat()
+    # display_chat()
 
     # Manage the input field using a placeholder
     # input_placeholder = st.empty()
@@ -246,7 +246,7 @@ def render_query_page():
                 except Exception as e:
                     st.error(f"An error occurred during query: {e}")
     # Display the updated chat history dynamically
-    # display_chat()
+    display_chat()
 
 
 # Clears the input but have to refresh page to get the response
