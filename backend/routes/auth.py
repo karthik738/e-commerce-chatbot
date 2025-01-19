@@ -43,7 +43,8 @@
 #         raise HTTPException(status_code=400, detail="Username already registered.")
 
 #     # Hash the password and store the user
-#     users_db[user.username] = pwd_context.hash(user.password)
+    # hashed_password = pwd_context.hash(user.password)
+    # users_db[user.username] = hashed_password
 
 #     return {"username": user.username, "message": "User registered successfully."}
 

@@ -55,7 +55,7 @@ import streamlit as st
 from typing import List, Optional
 
 # Base API URL
-# API_BASE_URL="http://localhost:8000/"
+# API_BASE_URL="http://127.0.0.1:8000"
 # API_BASE_URL = "https://e-commerce-chatbot-production.up.railway.app/"
 API_BASE_URL = "https://e-commerce-chatbot-3wi8.onrender.com"
 

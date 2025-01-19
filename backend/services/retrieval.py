@@ -1,5 +1,5 @@
 from sentence_transformers import SentenceTransformer
-import pinecone
+# import pinecone
 import logging
 
 MODEL_NAME = "all-MiniLM-L6-v2"

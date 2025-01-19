@@ -89,8 +89,8 @@ async def query_embeddings(request: QueryRequest, vector_db=Depends(get_vector_d
     query = request.query.strip()
     history = request.history or [] # Include conversation history
 
-    # logging.info(f"Query received: {query}")
-    # logging.info(f"History: {history}")
+    logging.info(f"Query received: {query}")
+    logging.info(f"History: {history}")
 
     if not query:
         raise HTTPException(status_code=400, detail="Query cannot be empty.")
@@ -98,8 +98,6 @@ async def query_embeddings(request: QueryRequest, vector_db=Depends(get_vector_d
 
 
     try:
-        
-
         # Retrieve matches from Pinecone
         matches = retrieve_from_pinecone(query,vector_db)
         # logging.info(f"Matches: {matches}")
@@ -121,17 +119,8 @@ async def query_embeddings(request: QueryRequest, vector_db=Depends(get_vector_d
         if len(history) > 5:  # Only summarize if history is large
                 summarized_history = summarize_with_openrouter(history[:-5])
 
-        # summarized_history = ""
-        # try:
-            # if len(history) > 5:  # Only summarize if history is large
-                # summarized_history = summarize_with_openrouter(history[:-5])
-        # except Exception as e:
-            # logging.warning(f"Summarization failed: {e}")
-            # summarized_history = ""
-
-
-        # summarized_history = summarize_history(history[:-5])  # Summarize older history
-        # summarized_history = summarize_with_openrouter(history[:-5])  # Summarize older history
+        # summarized_history = summarize_history(history[:-5])  
+        # summarized_history = summarize_with_openrouter(history[:-5])  
         # Alternative: Use local model or heuristic summarization
         # summarized_history = summarize_with_local_model(history[:-5])
         # summarized_history = summarize_with_heuristics(history[:-5])
@@ -177,6 +166,6 @@ async def query_embeddings(request: QueryRequest, vector_db=Depends(get_vector_d
             status_code=500,
         )
 
-# @router.get("/")
-# async def fun():
-#     return {"message": "Welcome to the Query"} 
+@router.get("/")
+async def fun():
+    return {"message": "Welcome to the Query"} 

@@ -1,4 +1,4 @@
-import os
+# import os
 from sentence_transformers import SentenceTransformer
 from pinecone import Pinecone, ServerlessSpec
 import logging

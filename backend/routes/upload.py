@@ -17,18 +17,22 @@ router = APIRouter()
 # Maximum file size (10 MB)
 MAX_FILE_SIZE = 10 * 1024 * 1024
 
-# Lazy initialization for vector database
-_vector_db = None
 
-def get_vector_db():
-    """
-    Initialize vector database lazily.
-    """
-    global _vector_db
-    if _vector_db is None:
-        # logging.info("Initializing vector database...")
-        _vector_db = init_vector_db()
-    return _vector_db
+# Initialize vector database
+vector_db = init_vector_db()
+
+# Lazy initialization for vector database
+# _vector_db = None
+
+# def get_vector_db():
+#     """
+#     Initialize vector database lazily.
+#     """
+#     global _vector_db
+#     if _vector_db is None:
+#         # logging.info("Initializing vector database...")
+#         _vector_db = init_vector_db()
+#     return _vector_db
 
 
 @router.post("/")
@@ -38,7 +42,7 @@ async def upload_files(
     """
     Endpoint for uploading files.
     """
-    vector_db = get_vector_db()  # Initialize vector_db lazily
+    # vector_db = get_vector_db()  # Initialize vector_db lazily
 
     response_data = []
     for file in files:
