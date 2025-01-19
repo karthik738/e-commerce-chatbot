@@ -2,7 +2,7 @@ import logging
 from openai import OpenAI
 
 # Constants
-API_KEY = "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"
+API_KEY = "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"
 BASE_URL = "https://openrouter.ai/api/v1"
 MODEL_NAME = "meta-llama/llama-3.2-3b-instruct:free"
 
