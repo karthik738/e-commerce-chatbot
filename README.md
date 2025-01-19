@@ -1,9 +1,3 @@
-https://e-commerce-chatbot.streamlit.app/
-
-https://e-commerce-chatbot-black.vercel.app/
-
-Here’s a comprehensive README template for your project:
-
 ---
 
 # **E-commerce Chatbot**
@@ -13,6 +7,7 @@ A robust, embeddable chatbot designed for eCommerce websites to enhance customer
 ---
 
 ## **Features**
+
 ### 1. **File Upload for RAG Pipeline**
 - Upload files in formats such as PDF, TXT, or CSV.
 - Automatically processes files and integrates them into the chatbot's knowledge base.
@@ -29,15 +24,25 @@ A robust, embeddable chatbot designed for eCommerce websites to enhance customer
 ---
 
 ## **Demo**
-### Screenshots
-- **Streamlit Interface**
-  ![Streamlit Interface Demo](path/to/screenshot1.png)
 
-- **Chatbot UI (React Interface)**
-  ![Chatbot React Demo](path/to/screenshot2.png)
+### **Deployed Links**
+- **Streamlit Admin Panel**: [Streamlit App](https://e-commerce-chatbot.streamlit.app/)
+- **React Chatbot Interface**: [Vercel Deployment](https://e-commerce-chatbot-black.vercel.app/)
+- **Backend API Test**: [Render Deployment](https://e-commerce-chatbot-3wi8.onrender.com/)
 
-<!-- ### Video Walkthrough -->
-<!-- [![Watch the video](path/to/thumbnail.png)](path/to/demo-video-link) -->
+### **Screenshots**
+
+1. **Streamlit Admin Interface**:
+   ![Streamlit Interface](./images/Screenshot%20(1299).png)
+
+2. **React Chatbot UI**:
+   ![Chatbot Interface](./images/Screenshot%20(1300).png)
+
+3. **File Upload Process**:
+   ![File Upload](./images/Screenshot%20(1301).png)
+
+4. **Backend Service Logs**:
+   ![Backend Logs](./images/Screenshot%20(1302).png)
 
 ---
 
@@ -50,16 +55,18 @@ cd e-commerce-chatbot
 ```
 
 ### **2. Backend Setup**
+
 #### Prerequisites:
 - Python 3.8+
 - Pinecone API Key
-- Install dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
+
+#### Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
 #### Configuration:
-1. **Pinecone Setup**:  
+1. **Pinecone Setup**:
    Set your Pinecone API key and environment in the `backend/main.py` file or as environment variables:
    ```bash
    export PINECONE_API_KEY=<your_api_key>
@@ -72,7 +79,10 @@ cd e-commerce-chatbot
    uvicorn main:app --host 0.0.0.0 --port 8000
    ```
 
+---
+
 ### **3. Streamlit Frontend (Admin Panel)**
+
 #### Prerequisites:
 - Install Streamlit:
   ```bash
@@ -85,7 +95,10 @@ cd streamlit_app_final
 streamlit run app.py
 ```
 
+---
+
 ### **4. Chatbot UI (React Interface)**
+
 #### Prerequisites:
 - Node.js and npm/yarn installed.
 
@@ -103,7 +116,7 @@ streamlit run app.py
 3. Configure API Endpoint:
    Update the `BASE_URL` in `api.js` to point to your backend's deployment URL:
    ```javascript
-   const BASE_URL = "https://e-commerce-chatbot-production.up.railway.app/";
+   const BASE_URL = "https://e-commerce-chatbot-3wi8.onrender.com/";
    ```
 
 4. Start the Development Server:
@@ -121,7 +134,9 @@ streamlit run app.py
 ---
 
 ## **Architecture**
+
 ### **Retrieval-Augmented Generation (RAG) Pipeline**
+
 1. **File Upload**: Files uploaded via Streamlit are processed and indexed into Pinecone.
 2. **Query Handling**:
    - When a user asks a question, the chatbot retrieves relevant chunks from Pinecone.
@@ -131,7 +146,9 @@ streamlit run app.py
 ---
 
 ## **Embedding Process**
+
 ### For the React-based Chatbot UI:
+
 1. Deploy the chatbot to a service like **Vercel**.
 2. Copy the provided embed script:
    ```html
@@ -147,6 +164,7 @@ streamlit run app.py
 ---
 
 ## **File Structure**
+
 ```plaintext
 ecommerce-chatbot/
 │
@@ -170,6 +188,7 @@ ecommerce-chatbot/
 ---
 
 ## **FAQs**
+
 1. **Can the chatbot handle follow-up queries?**  
    Yes, it retains conversational history for seamless follow-ups.
 
@@ -191,4 +210,3 @@ This project is licensed under the MIT License. See `LICENSE` for details.
 
 ---
 
-Feel free to replace placeholders like `your_api_key`, `your_environment`, or image links with actual project details!

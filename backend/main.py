@@ -19,7 +19,7 @@ logging.basicConfig(
 # logging.info("before FastAPI application")
 
 # Initialize FastAPI app
-app = FastAPI()
+app = FastAPI(strict_slashes=False)
 
 # logging.info("afterr the FastAPI application")
 
@@ -29,8 +29,8 @@ origins = [
     "http://localhost:8501",  # Streamlit development server
     "https://e-commerce-chatbot-black.vercel.app/",
     "https://e-commerce-chatbot.streamlit.app/"
-    # "https://e-commerce-chatbot-production.up.railway.app/",
-    # "https://e-commerce-chatbot-3wi8.onrender.com/"
+    "https://e-commerce-chatbot-production.up.railway.app/",
+    "https://e-commerce-chatbot-3wi8.onrender.com"
 ]
 
 # logging.info("after origins")
@@ -83,9 +83,9 @@ app.include_router(auth_router, prefix="/auth", tags=["Authentication"])
 async def root():
     return {"message": "Welcome to the RAG Chatbot Backend"}
 
-@app.get("/{full_path:path}")
-async def fallback(full_path: str):
-    return {"error": "File not found", "path": full_path}
+# @app.get("/{full_path:path}")
+# async def fallback(full_path: str):
+#     return {"error": "File not found", "path": full_path}
 
 
 
