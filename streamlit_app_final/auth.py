@@ -76,7 +76,7 @@
 # # V3
 import streamlit as st
 
-# Initialize `admins` key in session state
+# Initialize session state keys if not already initialized
 if "admins" not in st.session_state:
     st.session_state["admins"] = {"admin": "admin@123"}  # Default admin credentials
 
@@ -86,14 +86,7 @@ if "auth_token" not in st.session_state:
 if "username" not in st.session_state:
     st.session_state["username"] = ""
 
-# Function to reset profile form fields
-def reset_profile_fields():
-    if "new_user" in st.session_state:
-        st.session_state["new_user"] = ""
-    if "new_pass" in st.session_state:
-        st.session_state["new_pass"] = ""
-
-
+# Authenticate a user based on credentials stored in session state
 def authenticate(username: str, password: str) -> bool:
     """
     Authenticate a user based on credentials stored in session state.
@@ -112,7 +105,7 @@ def authenticate(username: str, password: str) -> bool:
         return True
     return False
 
-
+# Check if the user is authenticated
 def is_authenticated() -> bool:
     """
     Check if the user is authenticated.
@@ -122,7 +115,7 @@ def is_authenticated() -> bool:
     """
     return st.session_state.get("auth_token", False)
 
-
+# Log out the user and reset session state
 def logout():
     """
     Clear the session state to log out the user.
@@ -132,43 +125,47 @@ def logout():
     st.session_state["page"] = "Landing"
     st.success("You have been logged out.")
 
-
+# Manage users: Add, delete, or view admin users
 def manage_users():
     """
     Render the user management interface for adding, editing, and deleting users.
     """
     st.subheader("Admin Management")
 
-    # Display existing users
+    # Display current admin users
     st.write("### Current Admin Users")
     for username in st.session_state["admins"]:
         st.write(f"**{username}**")
 
     # Add a new user
     st.write("### Add New User")
-    new_username = st.text_input("New Username", key="new_user", placeholder="Enter new username")
-    new_password = st.text_input("New Password", type="password", key="new_pass", placeholder="Enter new password")
+    new_user = st.text_input("New Username", key="new_user", placeholder="Enter a new username")
+    new_pass = st.text_input("New Password", type="password", key="new_pass", placeholder="Enter a new password")
+
     if st.button("Add User"):
-        if not new_username or not new_password:
+        if not new_user or not new_pass:
             st.error("Both username and password are required!")
-        elif new_username in st.session_state["admins"]:
-            st.error(f"User {new_username} already exists!")
+        elif new_user in st.session_state["admins"]:
+            st.error(f"User {new_user} already exists!")
         else:
-            st.session_state["admins"][new_username] = new_password
-            st.success(f"User {new_username} added successfully!")
-            reset_profile_fields()  # Clear the fields
+            st.session_state["admins"][new_user] = new_pass
+            st.success(f"User {new_user} added successfully!")
 
     # Delete an existing user
     st.write("### Delete User")
-    delete_username = st.selectbox(
-        "Select a user to delete", options=list(st.session_state["admins"].keys())
+    delete_user = st.selectbox(
+        "Select a user to delete", 
+        options=list(st.session_state["admins"].keys()), 
+        key="delete_user"
     )
+
     if st.button("Delete User"):
-        if delete_username == "admin":
+        if delete_user == "admin":
             st.error("You cannot delete the default admin user!")
         else:
-            del st.session_state["admins"][delete_username]
-            st.success(f"User {delete_username} deleted successfully!")
+            del st.session_state["admins"][delete_user]
+            st.success(f"User {delete_user} deleted successfully!")
+
 
 
 # V2

@@ -55,7 +55,7 @@
 # # V3 
 # V3
 import streamlit as st
-from auth import authenticate, logout, is_authenticated, manage_users
+from auth import authenticate, logout, manage_users
 from api import upload_files_to_backend, query_backend, UPLOAD_ENDPOINT, QUERY_ENDPOINT
 
 # Streamlit app configuration
@@ -100,22 +100,22 @@ def render_top_bar():
     )
     col1, col2, col3 = st.columns([8, 1, 1])
     with col2:
-        if st.button("Profile", key="profile", help="Manage profile and users", use_container_width=True):
+        if st.button("Profile", key="profile"):
             st.session_state["page"] = "Profile"
     with col3:
-        if st.button("Logout", key="logout", help="Log out of your session", use_container_width=True):
+        if st.button("Logout", key="logout"):
             logout()
             st.session_state["page"] = "Landing"
 
-# Function to render the landing page
+# Landing page
 def render_landing_page():
     st.title("Welcome to E-commerce Chatbot")
     col1, col2 = st.columns(2)
 
     with col1:
         st.subheader("Login")
-        username = st.text_input("Username", key="login_username", placeholder="Enter your username")
-        password = st.text_input("Password", type="password", key="login_password", placeholder="Enter your password")
+        username = st.text_input("Username", key="login_username")
+        password = st.text_input("Password", type="password", key="login_password")
         if st.button("Login"):
             if authenticate(username, password):
                 st.success("Login successful!")
@@ -129,7 +129,7 @@ def render_landing_page():
         st.text_input("Password", type="password", key="register_password", disabled=True)
         st.button("Register", disabled=True)
 
-# Function to render the home page with navigation
+# Home page
 def render_home_page():
     render_top_bar()
     if st.session_state["show_sidebar"]:
@@ -201,7 +201,7 @@ def render_query_page():
                 except Exception as e:
                     st.error(f"An error occurred during query: {e}")
 
-# Profile Management page
+# Profile management page
 def render_profile_page():
     render_top_bar()
     st.title("Profile Management")
