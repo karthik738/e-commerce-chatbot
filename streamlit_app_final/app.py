@@ -186,10 +186,13 @@ def render_query_page():
     # Function to render the chat history dynamically
     def display_chat():
         with chat_placeholder.container():
-            for chat in st.session_state["chat_history"]:
-                st.markdown(f"**You:** {chat['query']}")
-                st.markdown(f"**Bot:** {chat['answer']}")
-                st.divider()  # Add a divider between chat messages
+            if st.session_state["chat_history"]:
+                for chat in st.session_state["chat_history"]:
+                    st.markdown(f"**You:** {chat['query']}")
+                    st.markdown(f"**Bot:** {chat['answer']}")
+                    st.divider()  # Add a divider between chat messages
+            else:
+                st.info("No chat history yet. Start by asking a question!")
 
     # Display the current chat history
     display_chat()
