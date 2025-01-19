@@ -57,7 +57,7 @@ from typing import List, Optional
 # Base API URL
 # API_BASE_URL="http://localhost:8000/"
 # API_BASE_URL = "https://e-commerce-chatbot-production.up.railway.app/"
-API_BASE_URL = "https://e-commerce-chatbot-3wi8.onrender.com/"
+API_BASE_URL = "https://e-commerce-chatbot-3wi8.onrender.com"
 
 UPLOAD_ENDPOINT = f"{API_BASE_URL}/upload"
 QUERY_ENDPOINT = f"{API_BASE_URL}/query"
@@ -67,6 +67,7 @@ def upload_files_to_backend(api_url: str, files: List[st.runtime.uploaded_file_m
     files_to_upload = [("files", (file.name, file.getvalue(), file.type)) for file in files]
     try:
         response = requests.post(api_url, files=files_to_upload)
+        st.write(response.text)  # Log the backend response
         return response
     except Exception as e:
         st.error(f"An error occurred during file upload: {e}")

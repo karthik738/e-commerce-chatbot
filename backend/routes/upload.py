@@ -1,7 +1,7 @@
 import os
 import logging
 from fastapi import APIRouter, UploadFile, File, BackgroundTasks, HTTPException
-# from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse
 import aiofiles
 from services.embedding import init_vector_db, embeddings_exist
 from utils.file_utils import process_file
