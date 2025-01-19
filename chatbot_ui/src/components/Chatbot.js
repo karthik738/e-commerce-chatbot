@@ -70,21 +70,27 @@ const Chatbot = () => {
 
   const handleSend = async () => {
     if (!userInput.trim()) return;
-
+  
     // Add the user's query to the chat history
     const updatedMessages = [...messages, { role: "user", text: userInput }];
     setMessages(updatedMessages);
     setUserInput(""); // Clear the input field
-
+  
+    // Debugging: Log the payload being sent
+    console.log("Sending query to backend:", { query: userInput, history: updatedMessages });
+  
     // Send the query along with chat history to the backend
     try {
       const response = await sendQueryToBackend(userInput, updatedMessages); // Pass the updated history
+      console.log("Backend response:", response); // Debugging: Log the backend response
+  
       const botMessage = {
         role: "bot",
         text: response.data.answer || "I couldn't process that. Please try again.",
       };
       setMessages((prevMessages) => [...prevMessages, botMessage]);
     } catch (error) {
+      console.error("Error occurred:", error); // Debugging: Log the error
       const errorMessage = {
         role: "bot",
         text: "An error occurred. Please try again later.",
@@ -92,6 +98,7 @@ const Chatbot = () => {
       setMessages((prevMessages) => [...prevMessages, errorMessage]);
     }
   };
+  
 
   return (
     <div className="chatbot-container">
