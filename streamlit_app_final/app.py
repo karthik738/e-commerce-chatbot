@@ -192,7 +192,7 @@ def render_query_page():
                 st.divider()  # Add a divider between chat messages
 
     # Display the current chat history
-    display_chat()
+    # display_chat()
 
     # Manage the input field using a placeholder
     # input_placeholder = st.empty()
@@ -237,7 +237,7 @@ def render_query_page():
                         st.session_state["temp_query"] = ""
                         # input_placeholder.empty()  # Clear the input placeholder
                         # Re-render the chat with the updated history
-                        display_chat()
+                        # display_chat()
                     else:
                         st.error(f"Query failed. Status code: {response.status_code}")
                 except Exception as e:
