@@ -27,7 +27,7 @@ app = FastAPI(strict_slashes=False)
 origins = [
     "http://localhost:3000",  # Frontend development server
     "http://localhost:8501",  # Streamlit development server
-    "https://e-commerce-chatbot-black.vercel.app/",
+    "https://e-commerce-chatbot-black.vercel.app",
     "https://e-commerce-chatbot.streamlit.app/"
     "https://e-commerce-chatbot-production.up.railway.app/",
     "https://e-commerce-chatbot-1-ydcl.onrender.com"
