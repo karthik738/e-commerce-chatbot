@@ -324,17 +324,21 @@ def render_query_page():
                 try:
                     # Query the backend API
                     response = query_backend(QUERY_ENDPOINT, query, st.session_state["chat_history"])
-                    if response and response.status_code == 200:
-                        data = response.json()
+                    if response:
+                        st.write("**Debug Response:**", response.json())  # Log full backend response
+                        if  response.status_code == 200:
+                            data = response.json()
                         # Append the query and answer to chat history
-                        st.session_state["chat_history"].append({
-                            "query": query,
-                            "answer": data.get("answer", "No answer available."),
-                        })
-                        st.session_state["current_query"] = ""  # Clear the input field
-                        display_chat()  # Immediately update chat history on the screen
+                            st.session_state["chat_history"].append({
+                                "query": query,
+                                "answer": data.get("answer", "No answer available."),
+                            })
+                            st.session_state["current_query"] = ""  # Clear the input field
+                            display_chat()  # Immediately update chat history on the screen
+                        else:
+                            st.error(f"Query failed. Status code: {response.status_code}")
                     else:
-                        st.error(f"Query failed. Status code: {response.status_code}")
+                        st.error("No response from the backend.")
                 except Exception as e:
                     st.error(f"An error occurred during query: {e}")
         else:
