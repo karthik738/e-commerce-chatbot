@@ -80,10 +80,18 @@ import streamlit as st
 if "admins" not in st.session_state:
     st.session_state["admins"] = {"admin": "admin@123"}  # Default admin credentials
 
+if "auth_token" not in st.session_state:
+    st.session_state["auth_token"] = False
+
+if "username" not in st.session_state:
+    st.session_state["username"] = ""
+
 # Function to reset profile form fields
 def reset_profile_fields():
-    st.session_state["new_user"] = ""
-    st.session_state["new_pass"] = ""
+    if "new_user" in st.session_state:
+        st.session_state["new_user"] = ""
+    if "new_pass" in st.session_state:
+        st.session_state["new_pass"] = ""
 
 
 def authenticate(username: str, password: str) -> bool:
@@ -112,7 +120,7 @@ def is_authenticated() -> bool:
     Returns:
         bool: True if authenticated, False otherwise.
     """
-    return "auth_token" in st.session_state
+    return st.session_state.get("auth_token", False)
 
 
 def logout():
@@ -138,10 +146,12 @@ def manage_users():
 
     # Add a new user
     st.write("### Add New User")
-    new_username = st.text_input("New Username", key="new_user")
-    new_password = st.text_input("New Password", type="password", key="new_pass")
+    new_username = st.text_input("New Username", key="new_user", placeholder="Enter new username")
+    new_password = st.text_input("New Password", type="password", key="new_pass", placeholder="Enter new password")
     if st.button("Add User"):
-        if new_username in st.session_state["admins"]:
+        if not new_username or not new_password:
+            st.error("Both username and password are required!")
+        elif new_username in st.session_state["admins"]:
             st.error(f"User {new_username} already exists!")
         else:
             st.session_state["admins"][new_username] = new_password
@@ -159,7 +169,6 @@ def manage_users():
         else:
             del st.session_state["admins"][delete_username]
             st.success(f"User {delete_username} deleted successfully!")
-
 
 
 # V2

@@ -32,17 +32,45 @@ A robust, embeddable chatbot designed for eCommerce websites to enhance customer
 
 ### **Screenshots**
 
-1. **Streamlit Admin Interface**:
-   ![Streamlit Interface](./images/Screenshot%20(1299).png)
+   ![Image 1](https://github.com/karthik738/e-commerce-chatbot/blob/main/images/Screenshot%20(1250).png?raw=true)
 
-2. **React Chatbot UI**:
-   ![Chatbot Interface](./images/Screenshot%20(1300).png)
+   ![Image 2](![./images/Screenshot%20(1300).png](https://github.com/karthik738/e-commerce-chatbot/blob/main/images/Screenshot%20(1251).png?raw=true))
 
-3. **File Upload Process**:
-   ![File Upload](./images/Screenshot%20(1301).png)
+   ![Image 3](https://github.com/karthik738/e-commerce-chatbot/blob/main/images/Screenshot%20(1258).png?raw=true)
 
-4. **Backend Service Logs**:
-   ![Backend Logs](./images/Screenshot%20(1302).png)
+   ![Image 4](https://github.com/karthik738/e-commerce-chatbot/blob/main/images/Screenshot%20(1259).png?raw=true)
+
+   ![Image 5](https://github.com/karthik738/e-commerce-chatbot/blob/main/images/Screenshot%20(1260).png?raw=true)
+
+   ![Image 6](https://github.com/karthik738/e-commerce-chatbot/blob/main/images/Screenshot%20(1261).png?raw=true)
+
+   ![Image 7](![./images/Screenshot%20(1300).png](https://github.com/karthik738/e-commerce-chatbot/blob/main/images/Screenshot%20(1262).png?raw=true))
+
+   ![Image 8](https://github.com/karthik738/e-commerce-chatbot/blob/main/images/Screenshot%20(1264).png?raw=true)
+
+   ![Image 9](https://github.com/karthik738/e-commerce-chatbot/blob/main/images/Screenshot%20(1265).png?raw=true)
+
+   ![Image 10](https://github.com/karthik738/e-commerce-chatbot/blob/main/images/Screenshot%20(1266).png?raw=true)
+
+
+   ![Image 11](https://github.com/karthik738/e-commerce-chatbot/blob/main/images/Screenshot%20(1267).png?raw=true)
+
+   ![Image 12](![./images/Screenshot%20(1300).png](https://github.com/karthik738/e-commerce-chatbot/blob/main/images/Screenshot%20(1268).png?raw=true))
+
+   ![Image 13](https://github.com/karthik738/e-commerce-chatbot/blob/main/images/Screenshot%20(1269).png?raw=true)
+
+   ![Image 14](https://github.com/karthik738/e-commerce-chatbot/blob/main/images/Screenshot%20(1270).png?raw=true)
+
+   ![Image 15](https://github.com/karthik738/e-commerce-chatbot/blob/main/images/Screenshot%20(1271).png?raw=true)
+
+   ![Image 16](https://github.com/karthik738/e-commerce-chatbot/blob/main/images/Screenshot%20(1272).png?raw=true)
+
+   ![Image 17](![./images/Screenshot%20(1300).png](https://github.com/karthik738/e-commerce-chatbot/blob/main/images/Screenshot%20(1273).png?raw=true))
+
+   ![Image 18](https://github.com/karthik738/e-commerce-chatbot/blob/main/images/Screenshot%20(1292).png?raw=true)
+
+   ![Image 19](https://github.com/karthik738/e-commerce-chatbot/blob/main/images/Screenshot%20(1293).png?raw=true)
+
 
 ---
 
