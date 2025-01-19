@@ -195,31 +195,30 @@ def render_query_page():
                 st.info("No chat history yet. Start by asking a question!")
 
     # Display the current chat history
-    # display_chat()
+    display_chat()
 
     # Manage the input field using a placeholder
-    # input_placeholder = st.empty()
+    input_placeholder = st.empty()
 
     # Temporary variable to hold the query
     if "temp_query" not in st.session_state:
         st.session_state["temp_query"] = ""  # Initialize temporary query variable
 
     # Render the input field in the placeholder
-    # with input_placeholder.container():
-    #     query = st.text_input(
-    #         "Enter your question:",
-    #         value=st.session_state["temp_query"],
-    #         key="current_query",
-    # placeholder="Type your question here...",
-
-    #     )
+    with input_placeholder.container():
+        query = st.text_input(
+            "Enter your question:",
+            value=st.session_state["temp_query"],
+            key="current_query",
+    placeholder="Type your question here...",
+        )
 #     # Input field for the current query
-    query = st.text_input(
-        "Enter your question:",
-        value=st.session_state["temp_query"],  # Use the temp_query to persist input
-        key="current_query",
-        placeholder="Type your question here...",
-    )
+    # query = st.text_input(
+    #     "Enter your question:",
+    #     value=st.session_state["temp_query"],  # Use the temp_query to persist input
+    #     key="current_query",
+    #     placeholder="Type your question here...",
+    # )
 #     # Submit button for the current query
     if st.button("Send"):
         if query.strip():
@@ -240,7 +239,7 @@ def render_query_page():
                         st.session_state["temp_query"] = ""
                         # input_placeholder.empty()  # Clear the input placeholder
                         # Re-render the chat with the updated history
-                        display_chat()
+                        # display_chat()
                     else:
                         st.error(f"Query failed. Status code: {response.status_code}")
                 except Exception as e:
