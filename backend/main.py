@@ -30,7 +30,7 @@ origins = [
     "https://e-commerce-chatbot-black.vercel.app/",
     "https://e-commerce-chatbot.streamlit.app/"
     "https://e-commerce-chatbot-production.up.railway.app/",
-    "https://e-commerce-chatbot-3wi8.onrender.com"
+    "https://e-commerce-chatbot-1-ydcl.onrender.com"
 ]
 
 # logging.info("after origins")

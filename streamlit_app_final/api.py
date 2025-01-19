@@ -56,7 +56,7 @@ import streamlit as st
 from typing import List, Optional
 
 # Base API URL
-API_BASE_URL = "https://e-commerce-chatbot-3wi8.onrender.com"
+API_BASE_URL = "https://e-commerce-chatbot-1-ydcl.onrender.com"
 
 UPLOAD_ENDPOINT = f"{API_BASE_URL}/upload"
 QUERY_ENDPOINT = f"{API_BASE_URL}/query"

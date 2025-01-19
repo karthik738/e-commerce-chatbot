@@ -28,7 +28,7 @@ A robust, embeddable chatbot designed for eCommerce websites to enhance customer
 ### **Deployed Links**
 - **Streamlit Admin Panel**: [Streamlit App](https://e-commerce-chatbot.streamlit.app/)
 - **React Chatbot Interface**: [Vercel Deployment](https://e-commerce-chatbot-black.vercel.app/)
-- **Backend API Test**: [Render Deployment](https://e-commerce-chatbot-3wi8.onrender.com/)
+- **Backend API Test**: [Render Deployment](https://e-commerce-chatbot-1-ydcl.onrender.com)
 
 ### **Screenshots**
 
@@ -144,7 +144,7 @@ streamlit run app.py
 3. Configure API Endpoint:
    Update the `BASE_URL` in `api.js` to point to your backend's deployment URL:
    ```javascript
-   const BASE_URL = "https://e-commerce-chatbot-3wi8.onrender.com/";
+   const BASE_URL = "https://e-commerce-chatbot-1-ydcl.onrender.com";
    ```
 
 4. Start the Development Server:
